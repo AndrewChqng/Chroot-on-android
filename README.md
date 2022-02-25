@@ -27,7 +27,7 @@ $ apt update
 $ apt install tsu
 ```
 
-## Choosing a roofs
+## Choosing a rootfs
 
 the rootfs architecture have to match with your device architecture too, to know what architecture your phone have run:
 
