@@ -4,7 +4,7 @@
 
 - [Good to Mention](#good-to-mention)
 - [Setting termux up](#setting-termux-up)
-- [Choosing a roofs](#choosing-a-roofs)
+- [Choosing a rootfs](#choosing-a-rootfs)
 - [Extracting the rootfs](#extracting-the-rootfs)
 - [Making a script to launch the chroot environment](#making-a-script-to-launch-the-chroot-environment)
 - [Troubleshooting](#troubleshooting)
