@@ -17,15 +17,6 @@
 - I've used here a samsung A20 phone running Android 11
 - If any damage happens to your phone, you are all responsible for it!
 
-## Setting termux up
-
-You have to add `root-repo` and install [`tsu`](https://github.com/cswl/tsu) to get the root access under termux environment
-
-```shell
-$ apt install root-repo
-$ apt update
-$ apt install tsu
-```
 
 ## Choosing a rootfs
 
@@ -60,18 +51,16 @@ $ vim run-chroot.sh
 simple example:
 
 ```shell
-#!/data/data/com.termux/files/usr/bin/sh
+#!/bin/sh
 
 # fix /dev mount options
 mount -o remount,dev,suid /data
 
-mount --bind /dev ./chroot/dev
-mount --bind /sys ./chroot/sys
-mount --bind /proc ./chroot/proc
-mount --bind /dev/pts ./chroot/dev/pts
+mount --bind /dev /data/ubuntu/dev
+mount --bind /sys /data/ubuntu/sys
+mount --bind /proc /data/ubuntu/proc
+mount --bind /dev/pts /data/ubuntu/dev/pts
 
-# disable termux-exec
-unset LD_PRELOAD
 
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export TERM=$TERM
