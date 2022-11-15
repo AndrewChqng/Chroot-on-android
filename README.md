@@ -30,21 +30,21 @@ $ uname -m
 
 ## Extracting the rootfs
 
-Any location under `/data` should be good (because it formatted as `ext4`) so you can doing that under your termux home directory (because its under `/data` too "_**`/data`**_`/data/com.termux/files/home`"), or `/data/local`
+Any location under `/data` should be good (because it formatted as `ext4`)
 
 e.g.
 
 ```shell
 $ mkdir chroot #or anything else
-$ sudo tar xfp /sdcard/Download/rootfs.tar.xz -C ./chroot #to keep the files permissions
+$ sudo tar xfp /sdcard/Download/rootfs.tar.xz -C /data/ubuntu #to keep the files permissions
 ```
 
 ## Making a script to launch the chroot environment
 
-Use `vim` or any text editor you like for that:
+Use `nano` or any text editor you like for that:
 
 ```
-$ vim run-chroot.sh
+$ nano run-chroot.sh
 ```
 
 simple example:
