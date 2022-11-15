@@ -1,4 +1,4 @@
-# Chroot on Termux
+# Chroot on Android
 
 ## Content
 
