@@ -1,5 +1,5 @@
 # Chroot on Android
-
+Credit to https://github.com/ELWAER-M/Chroot-on-termux for the original script
 ## Content
 
 - [Good to Mention](#good-to-mention)
