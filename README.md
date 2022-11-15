@@ -65,7 +65,7 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export TERM=$TERM
 export TMPDIR=/tmp
 
-chroot ./chroot /bin/su - root
+chroot /data/ubuntu/ /bin/su - root
 ```
 
 then change the file permissions to executable:
