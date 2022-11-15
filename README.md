@@ -13,7 +13,7 @@
 ## Good to Mention
 
 - You need a [rooted](https://en.m.wikipedia.org/wiki/Rooting_(Android)) phone for that
-- I've used here a samsung A20 phone running Android 11
+- I've used here a Samsung S10+ phone running Lineage OS 19.1
 - If any damage happens to your phone, you are all responsible for it!
 
 
