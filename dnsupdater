@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# ChangeIP DDNS Update Script
+#
+# This script checks the current public IP address and updates a ChangeIP
+# DDNS record if the IP has changed. It runs in a continuous loop silently.
+
+# --- Configuration ---
+# Replace with your ChangeIP username
+USERNAME="boop"
+
+# Replace with your ChangeIP password or MD5/SHA256 hash of your password
+# Using a hash is more secure.
+PASSWORD="boop"
+
+# Replace with the hostname you want to update (e.g., your-domain.com)
+HOSTNAME="boop"
+
+# --- Script ---
+
+# File to store the last known IP address
+IP_FILE="/data/local/tmp/current_ip.txt"
+
+# --- Main Loop ---
+while true; do
+    # Get the current public IP address from a reliable service
+    CURRENT_IP=$(curl -s https://api.ipify.org)
+
+    if [ -z "$CURRENT_IP" ]; then
+        # If IP fetch fails, wait and try again in the next loop.
+        sleep 10
+        continue
+    fi
+
+    # Check if the IP file exists and read the last known IP
+    if [ -f "$IP_FILE" ]; then
+        LAST_IP=$(cat "$IP_FILE")
+    else
+        LAST_IP=""
+    fi
+
+    # If the IP address has changed, update it.
+    if [ "$CURRENT_IP" != "$LAST_IP" ]; then
+        # Update the DDNS record using the ChangeIP API
+        UPDATE_URL="https://nic.changeip.com/nic/update"
+        RESPONSE=$(curl -A "boop" -s "${UPDATE_URL}?hostname=${HOSTNAME}&myip=${CURRENT_IP}" -u "${USERNAME}:${PASSWORD}")
+        curl https://api.cloudflare.com/client/v4/zones/boop/dns_records/boop -X PUT -H 'Content-Type: application/json' -H "Authorization: Bearer boop" -d '{"name": "minecraft", "type": "A", "comment": "MinecraftUpdate", "content": "${CURRENT_IP}","proxied": false,"ttl": 60}'
+        # Check the response from the API and save the new IP on success
+        if [[ "$RESPONSE" == "200 Successful Update" ]]; then
+            echo "$CURRENT_IP" > "$IP_FILE"
+        fi
+    fi
+
+    # Wait for 10 seconds before the next check
+    sleep 10
+done
