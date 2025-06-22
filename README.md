@@ -20,7 +20,7 @@ Credit to https://github.com/ELWAER-M/Chroot-on-termux for the original script
 ## Choosing a rootfs
 
 the rootfs architecture have to match with your device architecture too, to know what architecture your phone have run:
-
+[Ubuntu RootFS](https://cdimage.ubuntu.com/ubuntu-base/releases/)
 ```shell
 $ uname -m
   aarch64
