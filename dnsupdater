@@ -44,7 +44,7 @@ while true; do
         # Update the DDNS record using the ChangeIP API
         UPDATE_URL="https://nic.changeip.com/nic/update"
         RESPONSE=$(curl -A "boop" -s "${UPDATE_URL}?hostname=${HOSTNAME}&myip=${CURRENT_IP}" -u "${USERNAME}:${PASSWORD}")
-        curl https://api.cloudflare.com/client/v4/zones/boop/dns_records/boop -X PUT -H 'Content-Type: application/json' -H "Authorization: Bearer boop" -d '{"name": "minecraft", "type": "A", "comment": "MinecraftUpdate", "content": "${CURRENT_IP}","proxied": false,"ttl": 60}'
+        curl https://api.cloudflare.com/client/v4/zones/boop/dns_records/boop -X PUT -H 'Content-Type: application/json' -H "Authorization: Bearer boop" -d "{\"name\": \"minecraft\", \"type\": \"A\", \"comment\": \"MinecraftUpdate\", \"content\": \"${CURRENT_IP}\",\"proxied\": false,\"ttl\": 60}"
         # Check the response from the API and save the new IP on success
         if [[ "$RESPONSE" == "200 Successful Update" ]]; then
             echo "$CURRENT_IP" > "$IP_FILE"
